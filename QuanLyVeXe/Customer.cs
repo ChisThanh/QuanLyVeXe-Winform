@@ -27,10 +27,7 @@ namespace QuanLyVeXe
             tabMain.SelectedTab=tabSchedule;
         }
 
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            tabMain.SelectedTab = tabSearch;
-        }
+      
 
         private void btnBill_Click(object sender, EventArgs e)
         {
