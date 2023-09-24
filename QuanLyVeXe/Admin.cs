@@ -16,7 +16,19 @@ namespace QuanLyVeXe
         {
             InitializeComponent();
         }
+        public bool isExit = true;
+        public event EventHandler Logout;
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            Logout(this, new EventArgs());
+        }
 
-       
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            if(isExit)
+            {
+                Application.Exit();
+            }
+        }
     }
 }

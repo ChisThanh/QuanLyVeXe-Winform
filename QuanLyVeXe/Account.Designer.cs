@@ -35,6 +35,7 @@ namespace QuanLyVeXe
             this.Border = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.btnClose = new Guna.UI2.WinForms.Guna2ControlBox();
             this.tabSignUp = new System.Windows.Forms.TabPage();
+            this.guna2DateTimePicker2 = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.guna2HtmlLabel11 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel7 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.label1 = new System.Windows.Forms.Label();
@@ -84,7 +85,6 @@ namespace QuanLyVeXe
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2TextBox7 = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2TextBox8 = new Guna.UI2.WinForms.Guna2TextBox();
-            this.guna2DateTimePicker2 = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.tabSignUp.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
@@ -145,6 +145,21 @@ namespace QuanLyVeXe
             this.tabSignUp.TabIndex = 1;
             this.tabSignUp.Text = "tabPage2";
             this.tabSignUp.UseVisualStyleBackColor = true;
+            // 
+            // guna2DateTimePicker2
+            // 
+            this.guna2DateTimePicker2.BorderRadius = 5;
+            this.guna2DateTimePicker2.Checked = true;
+            this.guna2DateTimePicker2.FillColor = System.Drawing.Color.White;
+            this.guna2DateTimePicker2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2DateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.guna2DateTimePicker2.Location = new System.Drawing.Point(623, 210);
+            this.guna2DateTimePicker2.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.guna2DateTimePicker2.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.guna2DateTimePicker2.Name = "guna2DateTimePicker2";
+            this.guna2DateTimePicker2.Size = new System.Drawing.Size(176, 36);
+            this.guna2DateTimePicker2.TabIndex = 1;
+            this.guna2DateTimePicker2.Value = new System.DateTime(2023, 8, 29, 15, 38, 19, 365);
             // 
             // guna2HtmlLabel11
             // 
@@ -555,6 +570,7 @@ namespace QuanLyVeXe
             this.btnSignIn.Size = new System.Drawing.Size(144, 45);
             this.btnSignIn.TabIndex = 12;
             this.btnSignIn.Text = "Đăng Nhập";
+            this.btnSignIn.Click += new System.EventHandler(this.btnSignIn_Click);
             // 
             // txtPass
             // 
@@ -834,21 +850,6 @@ namespace QuanLyVeXe
             this.guna2TextBox8.SelectedText = "";
             this.guna2TextBox8.Size = new System.Drawing.Size(200, 36);
             this.guna2TextBox8.TabIndex = 20;
-            // 
-            // guna2DateTimePicker2
-            // 
-            this.guna2DateTimePicker2.BorderRadius = 5;
-            this.guna2DateTimePicker2.Checked = true;
-            this.guna2DateTimePicker2.FillColor = System.Drawing.Color.White;
-            this.guna2DateTimePicker2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2DateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.guna2DateTimePicker2.Location = new System.Drawing.Point(623, 210);
-            this.guna2DateTimePicker2.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.guna2DateTimePicker2.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.guna2DateTimePicker2.Name = "guna2DateTimePicker2";
-            this.guna2DateTimePicker2.Size = new System.Drawing.Size(176, 36);
-            this.guna2DateTimePicker2.TabIndex = 1;
-            this.guna2DateTimePicker2.Value = new System.DateTime(2023, 8, 29, 15, 38, 19, 365);
             // 
             // Account
             // 

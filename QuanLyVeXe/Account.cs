@@ -56,6 +56,39 @@ namespace QuanLyVeXe
             tabSignUp.BackColor = Color.White;
         }
 
+        private void btnSignIn_Click(object sender, EventArgs e)
+        {
+            if (txtEmail.Text == "c")
+            {
+                Customer c = new Customer();
+                c.Show();
+                this.Hide();
+                c.Logout += F_Logout;
+            }
+            else 
+            {
+                Admin a = new Admin();
+                a.Show();
+                this.Hide();
+                a.Logout += F_Logout;
+            }
+        }
+
+        private void F_Logout(object sender, EventArgs e)
+        {
+            if(sender is Customer)
+            {
+                (sender as Customer).isExit = false;
+                (sender as Customer).Close();
+                this.Show();
+                return;
+            }
+
+            (sender as Admin).isExit = false;
+            (sender as Admin).Close();
+            this.Show();
+        }
+
        
     }
 }

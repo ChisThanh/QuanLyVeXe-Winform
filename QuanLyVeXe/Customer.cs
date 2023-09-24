@@ -16,18 +16,14 @@ namespace QuanLyVeXe
         {
             InitializeComponent();
         }
-
         private void btnHome_Click(object sender, EventArgs e)
         {
             tabMain.SelectedTab = tabHome;
         }
-
         private void btnSchedule_Click(object sender, EventArgs e)
         {
             tabMain.SelectedTab=tabSchedule;
         }
-
-      
 
         private void btnBill_Click(object sender, EventArgs e)
         {
@@ -38,7 +34,18 @@ namespace QuanLyVeXe
         {
             tabMain.SelectedTab = tabUser;
         }
-
-       
+        public bool isExit = true;
+        public event EventHandler Logout;
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            if (isExit)
+            {
+                Application.Exit();
+            }
+        }
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            Logout(this, new EventArgs());
+        }
     }
 }
