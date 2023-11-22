@@ -85,6 +85,7 @@ namespace QuanLyVeXe
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2TextBox7 = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2TextBox8 = new Guna.UI2.WinForms.Guna2TextBox();
+            this.guna2CheckBox1 = new Guna.UI2.WinForms.Guna2CheckBox();
             this.tabSignUp.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
@@ -439,6 +440,7 @@ namespace QuanLyVeXe
             // 
             // tabSignIn
             // 
+            this.tabSignIn.Controls.Add(this.guna2CheckBox1);
             this.tabSignIn.Controls.Add(this.guna2HtmlLabel1);
             this.tabSignIn.Controls.Add(this.guna2Panel1);
             this.tabSignIn.Controls.Add(this.btnForgotPass);
@@ -495,7 +497,7 @@ namespace QuanLyVeXe
             this.btnForgotPass.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnForgotPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnForgotPass.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.btnForgotPass.Location = new System.Drawing.Point(550, 349);
+            this.btnForgotPass.Location = new System.Drawing.Point(550, 366);
             this.btnForgotPass.Name = "btnForgotPass";
             this.btnForgotPass.Size = new System.Drawing.Size(122, 18);
             this.btnForgotPass.TabIndex = 18;
@@ -506,7 +508,7 @@ namespace QuanLyVeXe
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(495, 325);
+            this.label2.Location = new System.Drawing.Point(495, 342);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(158, 18);
             this.label2.TabIndex = 17;
@@ -518,7 +520,7 @@ namespace QuanLyVeXe
             this.btnClickSignUp.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnClickSignUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnClickSignUp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.btnClickSignUp.Location = new System.Drawing.Point(650, 324);
+            this.btnClickSignUp.Location = new System.Drawing.Point(650, 341);
             this.btnClickSignUp.Name = "btnClickSignUp";
             this.btnClickSignUp.Size = new System.Drawing.Size(71, 18);
             this.btnClickSignUp.TabIndex = 16;
@@ -565,7 +567,7 @@ namespace QuanLyVeXe
             this.btnSignIn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnSignIn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnSignIn.ForeColor = System.Drawing.Color.White;
-            this.btnSignIn.Location = new System.Drawing.Point(529, 246);
+            this.btnSignIn.Location = new System.Drawing.Point(529, 277);
             this.btnSignIn.Name = "btnSignIn";
             this.btnSignIn.Size = new System.Drawing.Size(144, 45);
             this.btnSignIn.TabIndex = 12;
@@ -851,6 +853,23 @@ namespace QuanLyVeXe
             this.guna2TextBox8.Size = new System.Drawing.Size(200, 36);
             this.guna2TextBox8.TabIndex = 20;
             // 
+            // guna2CheckBox1
+            // 
+            this.guna2CheckBox1.AutoSize = true;
+            this.guna2CheckBox1.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2CheckBox1.CheckedState.BorderRadius = 0;
+            this.guna2CheckBox1.CheckedState.BorderThickness = 0;
+            this.guna2CheckBox1.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2CheckBox1.Location = new System.Drawing.Point(501, 244);
+            this.guna2CheckBox1.Name = "guna2CheckBox1";
+            this.guna2CheckBox1.Size = new System.Drawing.Size(93, 17);
+            this.guna2CheckBox1.TabIndex = 35;
+            this.guna2CheckBox1.Text = "Nhớ mật khẩu";
+            this.guna2CheckBox1.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.guna2CheckBox1.UncheckedState.BorderRadius = 0;
+            this.guna2CheckBox1.UncheckedState.BorderThickness = 0;
+            this.guna2CheckBox1.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            // 
             // Account
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -935,6 +954,7 @@ namespace QuanLyVeXe
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox2;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel7;
         private Guna.UI2.WinForms.Guna2DateTimePicker guna2DateTimePicker2;
+        private Guna.UI2.WinForms.Guna2CheckBox guna2CheckBox1;
     }
 }
 

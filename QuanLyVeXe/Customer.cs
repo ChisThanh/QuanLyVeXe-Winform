@@ -15,6 +15,7 @@ namespace QuanLyVeXe
         public Customer()
         {
             InitializeComponent();
+            SetStyle(ControlStyles.DoubleBuffer | ControlStyles.OptimizedDoubleBuffer, true);
         }
         private void btnHome_Click(object sender, EventArgs e)
         {

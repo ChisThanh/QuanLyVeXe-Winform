@@ -16,7 +16,7 @@ namespace QuanLyVeXe
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Account());
+            Application.Run(new Customer());
         }
     }
 }

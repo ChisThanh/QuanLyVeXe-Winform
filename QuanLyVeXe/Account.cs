@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Controls.Primitives;
 using System.Windows.Forms;
@@ -13,6 +14,7 @@ namespace QuanLyVeXe
 {
     public partial class Account : Form
     {
+        private const string filePath = "loginInfo.txt";
         public Account()
         {
             InitializeComponent();
