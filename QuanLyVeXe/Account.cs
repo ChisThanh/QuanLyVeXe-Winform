@@ -9,12 +9,15 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Controls.Primitives;
 using System.Windows.Forms;
+using DataPlayer;
+using System.Windows.Interop;
 
 namespace QuanLyVeXe
 {
     public partial class Account : Form
     {
-        private const string filePath = "loginInfo.txt";
+        QL_BANVEXEKHACHEntities db = new QL_BANVEXEKHACHEntities();
+
         public Account()
         {
             InitializeComponent();
@@ -60,20 +63,44 @@ namespace QuanLyVeXe
 
         private void btnSignIn_Click(object sender, EventArgs e)
         {
-            if (txtEmail.Text == "c")
+            string email = txtEmail.Text;
+            string pass = txtPass.Text;
+
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(pass))
             {
-                Customer c = new Customer();
-                c.Show();
-                this.Hide();
-                c.Logout += F_Logout;
+                MessageBox.Show("Bạn phải điền đầy đủ thông tin");
+                return; 
             }
-            else 
+
+            var uu = db.NHANVIENs.ToList().Find(each => each.EMAIL == email);
+            if(uu == null)
+            {
+                MessageBox.Show("Email không tồn tại bạn cần đăng ký tài khoản mới");
+                return;
+            }
+
+            var u = db.NHANVIENs.ToList().Find(each => each.EMAIL == email && each.MATKHAU_NV == pass);
+            if(u == null)
+            {
+                MessageBox.Show("Email hoặc mật khẩu đã sai");
+                return;
+            }
+
+            if (u.QUYEN == "admin")
             {
                 Admin a = new Admin();
                 a.Show();
                 this.Hide();
                 a.Logout += F_Logout;
             }
+            else 
+            {
+                Customer c = new Customer();
+                c.Show();
+                this.Hide();
+                c.Logout += F_Logout;
+            }
+
         }
 
         private void F_Logout(object sender, EventArgs e)
