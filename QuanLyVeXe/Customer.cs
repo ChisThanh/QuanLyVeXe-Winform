@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Documents;
 using System.Windows.Forms;
 using DataPlayer;
+using QuanLyVeXe.Models;
 namespace QuanLyVeXe
 {
     public partial class Customer : Form
@@ -65,6 +66,25 @@ namespace QuanLyVeXe
         private void btnUser_Click(object sender, EventArgs e)
         {
             tabMain.SelectedTab = tabUser;
+            KHACHHANG user = GlobalVariables.cus;
+
+            txt_HoTen.Text = user.TENKHACHHANG;
+            txt_TenDN.Text = user.MAKHACHHANG;
+            txtDC.Text = user.DIACHI;
+            txt_sdt.Text = user.SDT;
+            txt_Email.Text = user.EMAIL;
+            txt_pass.Text = user.MATKHAU_KH;
+            txt_NgaySinh.Text = user.NAMSINH.ToString();
+            if (user.GIOITINH == "Nam")
+            {
+                radioButton1.Checked = true;
+                radioButton2.Checked = false;
+            }
+            else
+            {
+                radioButton2.Checked = true;
+                radioButton1.Checked = false;
+            }
         }
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -139,5 +159,6 @@ namespace QuanLyVeXe
                 MessageBox.Show($"Đã nhấp vào ô có giá trị: {cellValue}");
             }
         }
+
     }
 }

@@ -12,6 +12,7 @@ namespace QuanLyVeXe
 {
     public partial class Admin : Form
     {
+        private Form activeForm = null;
         public Admin()
         {
             InitializeComponent();
@@ -29,6 +30,40 @@ namespace QuanLyVeXe
             {
                 Application.Exit();
             }
+        }
+        private void openChildForm(Form childForm)
+        {
+            if (activeForm != null)
+            {
+                activeForm.Close();
+            }
+            activeForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            panelChildForm.Controls.Add(childForm);
+            panelChildForm.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
+        }
+        private void Admin_Load(object sender, EventArgs e)
+        {
+            openChildForm(new User());
+        }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            openChildForm(new CustomerAdmin()); 
+        }
+ 
+        private void guna2Button5_Click(object sender, EventArgs e)
+        {
+            openChildForm(new User());
+        }
+
+        private void guna2Button3_Click(object sender, EventArgs e)
+        {
+            openChildForm(new ManageTickets());
         }
     }
 }

@@ -66,6 +66,12 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddManageTickets.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddManageTickets.Designer.cs">
+      <DependentUpon>AddManageTickets.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,8 +90,36 @@
     <Compile Include="Account.Designer.cs">
       <DependentUpon>Account.cs</DependentUpon>
     </Compile>
+    <Compile Include="CustomerAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomerAdmin.Designer.cs">
+      <DependentUpon>CustomerAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManageTickets.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageTickets.Designer.cs">
+      <DependentUpon>ManageTickets.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GlobalVariables.cs" />
+    <Compile Include="Models\Helper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QL_BANVEXEKHACHDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QL_BANVEXEKHACHDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User.Designer.cs">
+      <DependentUpon>User.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AddManageTickets.resx">
+      <DependentUpon>AddManageTickets.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Admin.resx">
       <DependentUpon>Admin.cs</DependentUpon>
     </EmbeddedResource>
@@ -94,6 +128,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Account.resx">
       <DependentUpon>Account.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomerAdmin.resx">
+      <DependentUpon>CustomerAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManageTickets.resx">
+      <DependentUpon>ManageTickets.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -104,6 +144,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="User.resx">
+      <DependentUpon>User.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -114,13 +157,22 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="QL_BANVEXEKHACHDataSet.xsc">
+      <DependentUpon>QL_BANVEXEKHACHDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="QL_BANVEXEKHACHDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QL_BANVEXEKHACHDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="QL_BANVEXEKHACHDataSet.xss">
+      <DependentUpon>QL_BANVEXEKHACHDataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\DataPlayer\DataPlayer.csproj">
       <Project>{28277e66-adcd-465a-b499-4428ecbaf928}</Project>
