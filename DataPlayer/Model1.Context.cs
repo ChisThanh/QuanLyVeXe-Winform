@@ -12,6 +12,8 @@ namespace DataPlayer
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class QL_BANVEXEKHACHEntities : DbContext
     {
@@ -33,5 +35,11 @@ namespace DataPlayer
         public virtual DbSet<TUYENXE> TUYENXEs { get; set; }
         public virtual DbSet<VEXE> VEXEs { get; set; }
         public virtual DbSet<XE> XEs { get; set; }
+    
+        [DbFunction("QL_BANVEXEKHACHEntities", "DoanhThuTheoThang")]
+        public virtual IQueryable<DoanhThuTheoThang_Result> DoanhThuTheoThang()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<DoanhThuTheoThang_Result>("[QL_BANVEXEKHACHEntities].[DoanhThuTheoThang]()");
+        }
     }
 }

@@ -21,6 +21,7 @@ namespace DataPlayer
         public string TINHTRANG { get; set; }
         public Nullable<decimal> THANHTIEN { get; set; }
         public Nullable<int> VITRIGHE { get; set; }
+        public Nullable<System.DateTime> NGAYDATVE { get; set; }
     
         public virtual KHACHHANG KHACHHANG { get; set; }
         public virtual NHANVIEN NHANVIEN { get; set; }

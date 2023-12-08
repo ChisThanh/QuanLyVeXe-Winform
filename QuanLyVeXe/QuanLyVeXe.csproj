@@ -51,6 +51,7 @@
     <Reference Include="System.Design" />
     <Reference Include="System.Management" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -66,11 +67,17 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddManageTickets.cs">
+    <Compile Include="AddManageCar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddManageTickets.Designer.cs">
-      <DependentUpon>AddManageTickets.cs</DependentUpon>
+    <Compile Include="AddManageCar.Designer.cs">
+      <DependentUpon>AddManageCar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddTuyen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddTuyen.designer.cs">
+      <DependentUpon>AddTuyen.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin.cs">
       <SubType>Form</SubType>
@@ -96,16 +103,34 @@
     <Compile Include="CustomerAdmin.Designer.cs">
       <DependentUpon>CustomerAdmin.cs</DependentUpon>
     </Compile>
-    <Compile Include="ManageTickets.cs">
+    <Compile Include="Dashboard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ManageTickets.Designer.cs">
-      <DependentUpon>ManageTickets.cs</DependentUpon>
+    <Compile Include="Dashboard.Designer.cs">
+      <DependentUpon>Dashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManagCar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManagCar.Designer.cs">
+      <DependentUpon>ManagCar.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\GlobalVariables.cs" />
     <Compile Include="Models\Helper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QLTuyen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QLTuyen.designer.cs">
+      <DependentUpon>QLTuyen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QlVE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QlVE.designer.cs">
+      <DependentUpon>QlVE.cs</DependentUpon>
+    </Compile>
     <Compile Include="QL_BANVEXEKHACHDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -117,8 +142,11 @@
     <Compile Include="User.Designer.cs">
       <DependentUpon>User.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AddManageTickets.resx">
-      <DependentUpon>AddManageTickets.cs</DependentUpon>
+    <EmbeddedResource Include="AddManageCar.resx">
+      <DependentUpon>AddManageCar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddTuyen.resx">
+      <DependentUpon>AddTuyen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin.resx">
       <DependentUpon>Admin.cs</DependentUpon>
@@ -132,8 +160,11 @@
     <EmbeddedResource Include="CustomerAdmin.resx">
       <DependentUpon>CustomerAdmin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ManageTickets.resx">
-      <DependentUpon>ManageTickets.cs</DependentUpon>
+    <EmbeddedResource Include="Dashboard.resx">
+      <DependentUpon>Dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManagCar.resx">
+      <DependentUpon>ManagCar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -144,6 +175,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="QLTuyen.resx">
+      <DependentUpon>QLTuyen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QlVE.resx">
+      <DependentUpon>QlVE.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="User.resx">
       <DependentUpon>User.cs</DependentUpon>
     </EmbeddedResource>

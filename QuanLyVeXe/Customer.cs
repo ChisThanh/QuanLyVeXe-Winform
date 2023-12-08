@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Documents;
 using System.Windows.Forms;
 using DataPlayer;
+using Guna.UI2.WinForms;
 using QuanLyVeXe.Models;
 namespace QuanLyVeXe
 {
@@ -20,6 +21,8 @@ namespace QuanLyVeXe
         AutoCompleteStringCollection collto = new AutoCompleteStringCollection();
         QL_BANVEXEKHACHEntities db = new QL_BANVEXEKHACHEntities();
         List<TUYENXE> _list = (new QL_BANVEXEKHACHEntities()).TUYENXEs.ToList();
+        List<VEXE> lVeXe = (new QL_BANVEXEKHACHEntities()).VEXEs.ToList();
+        KHACHHANG _cus = GlobalVariables.cus;
         public Customer()
         {
             InitializeComponent();
@@ -48,7 +51,8 @@ namespace QuanLyVeXe
         private void btnSchedule_Click(object sender, EventArgs e)
         {
             tabMain.SelectedTab=tabSchedule;
-
+            guna2DataGridView1.Rows.Clear();
+            guna2DataGridView1.Refresh();
             var ltmp = _list.OrderBy(each => each.DIEMDI).ToList();
             foreach (var ii in ltmp)
             {
@@ -62,6 +66,7 @@ namespace QuanLyVeXe
         private void btnBill_Click(object sender, EventArgs e)
         {
             tabMain.SelectedTab = tabBill;
+            loadHoaDon();
         }
         private void btnUser_Click(object sender, EventArgs e)
         {
@@ -97,7 +102,6 @@ namespace QuanLyVeXe
         {
             Logout(this, new EventArgs());
         }
-
         private void guna2Button1_Click(object sender, EventArgs e)
         {
             string strFrom = from.Text;
@@ -139,26 +143,189 @@ namespace QuanLyVeXe
                 gvhome.Rows[rowIndex].Cells["C7"].Value = Image.FromFile(@"..\..\images\ShoppingCart.png");
             }
         }
-
         private void gvhome_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == 6 && e.RowIndex >= 0)
             {
-                object cellValue = gvhome.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+                string tuyenValue = gvhome.Rows[e.RowIndex].Cells["C2"].Value.ToString();
 
-                MessageBox.Show($"Đã nhấp vào ô có giá trị: {cellValue}");
+                // Hiển thị MessageBox với 2 nút "Đồng ý" và "Hủy"
+                DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn chọn Tuyến: " + tuyenValue + "?", "Xác nhận", MessageBoxButtons.YesNo);
+
+                if (result == DialogResult.Yes)
+                {
+                    Random random = new Random();
+                    int randomNumber = random.Next(0, 1000);
+                    string formattedNumber = randomNumber.ToString("D3");
+
+                    string tenTuyen = gvhome.Rows[e.RowIndex].Cells["C2"].Value.ToString();
+
+                    // Lấy đối tượng TUYENXE tương ứng với mã tuyến xe
+                    TUYENXE selectedTuyenXe = _list.FirstOrDefault(t => t.TUYEN == tenTuyen);
+
+                    if (selectedTuyenXe != null)
+                    {
+                        if (selectedTuyenXe.SOGHETRONG > 0)
+                        {
+                            string maVeXe = "VX" + formattedNumber;
+                            string maKhachHang = _cus.MAKHACHHANG;
+                            string maNhanVien = "NV003";
+                            string maTuyenXe = selectedTuyenXe.MATUYENXE;
+                            string tinhTrang = "Chưa thanh toán";
+                            decimal thanhTien = decimal.Parse(selectedTuyenXe.GIATIEN.ToString());
+                            VEXE newVeXe = new VEXE
+                            {
+                                MAVEXE = maVeXe,
+                                MAKHACHHANG = maKhachHang,
+                                MANHANVIEN = maNhanVien,
+                                MATUYENXE = maTuyenXe,
+                                TINHTRANG = tinhTrang,
+                                THANHTIEN = thanhTien,
+                                VITRIGHE = selectedTuyenXe.SOGHETRONG
+                            };
+                            lVeXe.Add(newVeXe);
+                            db.VEXEs.Add(newVeXe);
+                            selectedTuyenXe.SOGHETRONG = selectedTuyenXe.SOGHETRONG - 1;
+                            db.SaveChanges();
+
+                            MessageBox.Show("Đã chọn Tuyến: " + tuyenValue + " thành công!");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không tìm thấy tuyến xe tương ứng!");
+                    }
+                }
+
             }
         }
-
         private void guna2DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == 2 && e.RowIndex >= 0)
             {
-                object cellValue = guna2DataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+                string tuyenValue = guna2DataGridView1.Rows[e.RowIndex].Cells["Col1"].Value.ToString();
 
-                MessageBox.Show($"Đã nhấp vào ô có giá trị: {cellValue}");
+                // Hiển thị MessageBox với 2 nút "Đồng ý" và "Hủy"
+                DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn chọn Tuyến: " + tuyenValue + "?", "Xác nhận", MessageBoxButtons.YesNo);
+
+                if (result == DialogResult.Yes)
+                {
+                    Random random = new Random();
+                    int randomNumber = random.Next(0, 1000);
+                    string formattedNumber = randomNumber.ToString("D3");
+
+                    string tenTuyen = guna2DataGridView1.Rows[e.RowIndex].Cells["Col1"].Value.ToString();
+
+                    // Lấy đối tượng TUYENXE tương ứng với mã tuyến xe
+                    TUYENXE selectedTuyenXe = _list.FirstOrDefault(t => t.TUYEN == tenTuyen);
+
+                    if (selectedTuyenXe != null)
+                    {
+                        if (selectedTuyenXe.SOGHETRONG > 0)
+                        {
+                            string maVeXe = "VX" + formattedNumber;
+                            string maKhachHang = _cus.MAKHACHHANG;
+                            string maNhanVien = "NV003";
+                            string maTuyenXe = selectedTuyenXe.MATUYENXE;
+                            string tinhTrang = "Chưa thanh toán";
+                            decimal thanhTien = decimal.Parse(selectedTuyenXe.GIATIEN.ToString());
+                            VEXE newVeXe = new VEXE
+                            {
+                                MAVEXE = maVeXe,
+                                MAKHACHHANG = maKhachHang,
+                                MANHANVIEN = maNhanVien,
+                                MATUYENXE = maTuyenXe,
+                                TINHTRANG = tinhTrang,
+                                THANHTIEN = thanhTien,
+                                VITRIGHE = selectedTuyenXe.SOGHETRONG
+                            };
+                            lVeXe.Add(newVeXe);
+                            db.VEXEs.Add(newVeXe);
+                            selectedTuyenXe.SOGHETRONG = selectedTuyenXe.SOGHETRONG - 1;
+                            db.SaveChanges();
+
+                            MessageBox.Show("Đã chọn Tuyến: " + tuyenValue + " thành công!");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không tìm thấy tuyến xe tương ứng!");
+                    }
+                }
+
             }
         }
+        private void guna2DataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string tuyenValue = guna2DataGridView2.Rows[e.RowIndex].Cells["Column2"].Value.ToString();
 
+            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa Vé: " + tuyenValue + "?", "Xác nhận", MessageBoxButtons.YesNo);
+
+            if (result == DialogResult.Yes)
+            {
+                string maVeXe = guna2DataGridView2.Rows[e.RowIndex].Cells["Column1"].Value.ToString();
+
+                guna2DataGridView2.Rows.RemoveAt(e.RowIndex);
+                var veXeToDelete = lVeXe.FirstOrDefault(v => v.MAVEXE == maVeXe);
+                if (veXeToDelete != null)
+                {
+                    lVeXe.Remove(veXeToDelete);
+                }
+                using (var context = new QL_BANVEXEKHACHEntities())
+                {
+                    var veXedel = context.VEXEs.FirstOrDefault(v => v.MAVEXE == maVeXe);
+                    if (veXedel != null)
+                    {
+                        context.VEXEs.Remove(veXedel);
+                        context.SaveChanges();
+                    }
+                }
+
+                MessageBox.Show("Đã xóa Vé: " + tuyenValue + " thành công!");
+            }
+
+        }
+        private void loadHoaDon()
+        {
+            guna2DataGridView2.Refresh();
+            guna2DataGridView2.Rows.Clear();
+            using (var context = new QL_BANVEXEKHACHEntities())
+            {
+                var vx = context.VEXEs
+                    .Where(x => x.MAKHACHHANG == _cus.MAKHACHHANG)
+                    .OrderBy(x => x.MAVEXE)
+                    .ToList();
+
+                foreach (var i in vx)
+                {
+                    int rowIndex = guna2DataGridView2.Rows.Add();
+                    guna2DataGridView2.Rows[rowIndex].Cells["Column1"].Value = i.MAVEXE;
+                    TUYENXE tuyenXe = _list.FirstOrDefault(t => t.MATUYENXE == i.MATUYENXE);
+                    if (tuyenXe != null)
+                    {
+                        guna2DataGridView2.Rows[rowIndex].Cells["Column2"].Value = tuyenXe.TUYEN;
+                    }
+                    guna2DataGridView2.Rows[rowIndex].Cells["Column3"].Value = i.TINHTRANG;
+                    guna2DataGridView2.Rows[rowIndex].Cells["Column4"].Value = i.THANHTIEN;
+                    guna2DataGridView2.Rows[rowIndex].Cells["Column5"].Value = i.VITRIGHE;
+                    guna2DataGridView2.Rows[rowIndex].Cells["Column6"].Value = Image.FromFile(@"..\..\images\Close.png");
+                }
+            }
+            guna2DataGridView2.Refresh();
+        }
+        private void loadLT()
+        {
+            guna2DataGridView1.Rows.Clear();
+            guna2DataGridView2.Refresh();
+            var ltmp = _list.OrderBy(each => each.DIEMDI).ToList();
+            foreach (var ii in ltmp)
+            {
+
+                int rowIndex = guna2DataGridView1.Rows.Add();
+                guna2DataGridView1.Rows[rowIndex].Cells["Col1"].Value = ii.TUYEN;
+                guna2DataGridView1.Rows[rowIndex].Cells["Col2"].Value = ii.GIOKHOIHANH;
+                guna2DataGridView1.Rows[rowIndex].Cells["Col3"].Value = Image.FromFile(@"..\..\images\ShoppingCart.png");
+            }
+        }
     }
 }

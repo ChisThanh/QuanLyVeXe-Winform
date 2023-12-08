@@ -112,6 +112,7 @@
             this.guna2HtmlLabel2.Size = new System.Drawing.Size(38, 15);
             this.guna2HtmlLabel2.TabIndex = 3;
             this.guna2HtmlLabel2.Text = "ADMIN";
+            this.guna2HtmlLabel2.Click += new System.EventHandler(this.guna2HtmlLabel2_Click);
             // 
             // guna2HtmlLabel1
             // 
@@ -137,6 +138,7 @@
             this.guna2Button4.Size = new System.Drawing.Size(250, 45);
             this.guna2Button4.TabIndex = 2;
             this.guna2Button4.Text = "Quản lý tuyến xe";
+            this.guna2Button4.Click += new System.EventHandler(this.guna2Button4_Click);
             // 
             // btnLogout
             // 
@@ -181,6 +183,7 @@
             this.guna2Button2.Size = new System.Drawing.Size(250, 45);
             this.guna2Button2.TabIndex = 0;
             this.guna2Button2.Text = "Quản lý vé";
+            this.guna2Button2.Click += new System.EventHandler(this.guna2Button2_Click);
             // 
             // guna2Button1
             // 
@@ -209,7 +212,7 @@
             this.guna2Button5.Name = "guna2Button5";
             this.guna2Button5.Size = new System.Drawing.Size(250, 45);
             this.guna2Button5.TabIndex = 0;
-            this.guna2Button5.Text = "Hồ sơ";
+            this.guna2Button5.Text = "Thống kê";
             this.guna2Button5.Click += new System.EventHandler(this.guna2Button5_Click);
             // 
             // guna2PictureBox3

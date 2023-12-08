@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="QL_BANVEXEKHACHModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="QL_BANVEXEKHACHModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="KHACHHANG">
           <Key>
             <PropertyRef Name="MAKHACHHANG" />
@@ -70,6 +70,7 @@
           <Property Name="GIOKHOIHANH" Type="time" Precision="7" />
           <Property Name="DIEMDI" Type="char" MaxLength="10" />
           <Property Name="DIEMDEN" Type="char" MaxLength="10" />
+          <Property Name="GIATIEN" Type="float" />
         </EntityType>
         <EntityType Name="VEXE">
           <Key>
@@ -82,6 +83,7 @@
           <Property Name="TINHTRANG" Type="nvarchar" MaxLength="60" />
           <Property Name="THANHTIEN" Type="money" />
           <Property Name="VITRIGHE" Type="int" />
+          <Property Name="NGAYDATVE" Type="date" />
         </EntityType>
         <EntityType Name="XE">
           <Key>
@@ -174,6 +176,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="DoanhThu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="float" />
+        <Function Name="DoanhThuTheoThang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Month" Type="int" />
+                <Property Name="TotalRevenue" Type="money" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="NhannVien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="float" />
+        <Function Name="SLKhachHang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="float" />
+        <Function Name="SLVE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="float" />
         <EntityContainer Name="QL_BANVEXEKHACHModelStoreContainer">
           <EntitySet Name="KHACHHANG" EntityType="Self.KHACHHANG" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NHANVIEN" EntityType="Self.NHANVIEN" Schema="dbo" store:Type="Tables" />
@@ -212,8 +228,7 @@
             <End Role="VEXE" EntitySet="VEXE" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="QL_BANVEXEKHACHModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -292,6 +307,7 @@
           <NavigationProperty Name="TINHTHANH1" Relationship="Self.FK_TUYENXE_TINHTHANH1" FromRole="TUYENXE" ToRole="TINHTHANH" />
           <NavigationProperty Name="XE" Relationship="Self.FK_TUYENXE_XE" FromRole="TUYENXE" ToRole="XE" />
           <NavigationProperty Name="VEXEs" Relationship="Self.FK_VEXE_TUYENXE" FromRole="TUYENXE" ToRole="VEXE" />
+          <Property Name="GIATIEN" Type="Double" />
         </EntityType>
         <EntityType Name="VEXE">
           <Key>
@@ -307,6 +323,7 @@
           <NavigationProperty Name="KHACHHANG" Relationship="Self.FK_VEXE_KHACHHANG" FromRole="VEXE" ToRole="KHACHHANG" />
           <NavigationProperty Name="NHANVIEN" Relationship="Self.FK_VEXE_NHANVIEN" FromRole="VEXE" ToRole="NHANVIEN" />
           <NavigationProperty Name="TUYENXE" Relationship="Self.FK_VEXE_TUYENXE" FromRole="VEXE" ToRole="TUYENXE" />
+          <Property Name="NGAYDATVE" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="XE">
           <Key>
@@ -437,7 +454,12 @@
             <End Role="TUYENXE" EntitySet="TUYENXEs" />
             <End Role="VEXE" EntitySet="VEXEs" />
           </AssociationSet>
+          <FunctionImport Name="DoanhThuTheoThang" IsComposable="true" ReturnType="Collection(QL_BANVEXEKHACHModel.DoanhThuTheoThang_Result)" />
         </EntityContainer>
+        <ComplexType Name="DoanhThuTheoThang_Result">
+          <Property Type="Int32" Name="Month" Nullable="true" />
+          <Property Type="Decimal" Name="TotalRevenue" Nullable="true" Precision="19" Scale="4" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -505,6 +527,7 @@
           <EntitySetMapping Name="TUYENXEs">
             <EntityTypeMapping TypeName="QL_BANVEXEKHACHModel.TUYENXE">
               <MappingFragment StoreEntitySet="TUYENXE">
+                <ScalarProperty Name="GIATIEN" ColumnName="GIATIEN" />
                 <ScalarProperty Name="MATUYENXE" ColumnName="MATUYENXE" />
                 <ScalarProperty Name="TUYEN" ColumnName="TUYEN" />
                 <ScalarProperty Name="MAXE" ColumnName="MAXE" />
@@ -519,6 +542,7 @@
           <EntitySetMapping Name="VEXEs">
             <EntityTypeMapping TypeName="QL_BANVEXEKHACHModel.VEXE">
               <MappingFragment StoreEntitySet="VEXE">
+                <ScalarProperty Name="NGAYDATVE" ColumnName="NGAYDATVE" />
                 <ScalarProperty Name="MAVEXE" ColumnName="MAVEXE" />
                 <ScalarProperty Name="MAKHACHHANG" ColumnName="MAKHACHHANG" />
                 <ScalarProperty Name="MANHANVIEN" ColumnName="MANHANVIEN" />
@@ -537,6 +561,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="DoanhThuTheoThang" FunctionName="QL_BANVEXEKHACHModel.Store.DoanhThuTheoThang">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QL_BANVEXEKHACHModel.DoanhThuTheoThang_Result">
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="TotalRevenue" ColumnName="TotalRevenue" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

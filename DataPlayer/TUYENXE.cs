@@ -28,6 +28,7 @@ namespace DataPlayer
         public Nullable<System.TimeSpan> GIOKHOIHANH { get; set; }
         public string DIEMDI { get; set; }
         public string DIEMDEN { get; set; }
+        public Nullable<double> GIATIEN { get; set; }
     
         public virtual TAIXE TAIXE { get; set; }
         public virtual TINHTHANH TINHTHANH { get; set; }

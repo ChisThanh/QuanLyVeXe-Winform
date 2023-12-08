@@ -58,12 +58,27 @@ namespace QuanLyVeXe
  
         private void guna2Button5_Click(object sender, EventArgs e)
         {
-            openChildForm(new User());
+            openChildForm(new Dashboard());
         }
 
         private void guna2Button3_Click(object sender, EventArgs e)
         {
-            openChildForm(new ManageTickets());
+            openChildForm(new ManagCar());
+        }
+
+        private void guna2Button2_Click(object sender, EventArgs e)
+        {
+            openChildForm(new QlVE());
+        }
+
+        private void guna2HtmlLabel2_Click(object sender, EventArgs e)
+        {
+            openChildForm(new User());
+        }
+
+        private void guna2Button4_Click(object sender, EventArgs e)
+        {
+            openChildForm(new QLTuyen());
         }
     }
 }

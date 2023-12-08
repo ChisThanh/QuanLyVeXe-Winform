@@ -50,6 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DoanhThuTheoThang_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="KHACHHANG.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
